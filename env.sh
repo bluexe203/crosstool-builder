@@ -1,23 +1,13 @@
 #!/bin/sh
 
 # For AArch32
-#export CROSS_ARCH=arm-unknown-linux-gnueabi
-#export LINUX_ARCH=arm
+export CROSS_ARCH=arm-unknown-linux-gnueabihf
+export LINUX_ARCH=arm
 
-# For AArch64
-#export CROSS_ARCH=aarch64-unknown-linux-gnu
-#export LINUX_ARCH=arm64
-
-# For RISC-V 32 (glibc is not supported)
-#export CROSS_ARCH=riscv32-unknown-elf
-#export LINUX_ARCH=riscv
-
-# For RISC-V 64
-export CROSS_ARCH=riscv64-unknown-linux-gnu
-#export CROSS_ARCH=riscv64-unknown-elf
-export LINUX_ARCH=riscv
-export ARCH_CFLAGS_FOR_TARGET=-mcmodel=medany
-export ARCH_CXXFLAGS_FOR_TARGET=-mcmodel=medany
+export BINUTILS_VERSION=binutils-2.30
+export GCC_VERSION=gcc-arm-src-snapshot-8.2-2018.08
+export LINUX_KERNEL_VERSION=linux-4.19
+export GLIBC_VERSION=glibc-2.28
 
 export TOP_DIR=`pwd`
 export CROSS_ROOT=$TOP_DIR/buildroot

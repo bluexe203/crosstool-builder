@@ -1,7 +1,7 @@
 
-SRC_NAME       ?= gcc
-BUILD_NAME     ?= $(SRC_NAME)-shared-musl
-BUILDER_NAME   ?= $(BUILD_NAME).mk
+SRC_NAME       ?= $(GCC_VERSION)
+BUILD_NAME     ?= $(SRC_NAME)-shared-glibc-mingw
+BUILDER_NAME   ?= gcc-shared-glibc-mingw.mk
 
 CONFIGURE_NAME ?= $(SRC_DIR)/configure
 MAKEFILE_NAME  ?= $(BUILD_DIR)/Makefile
@@ -16,31 +16,27 @@ configure-body:
 	$(SRC_DIR)/configure \
 	  --target=$(CROSS_ARCH) \
 	  --prefix=$(PREFIX) \
+	  --host=x86_64-w64-mingw32 \
 	  --enable-languages=c,c++ \
-	  --disable-libatomic \
+	  --enable-libatomic \
 	  --disable-libitm \
-	  --disable-libgomp \
-	  --disable-libmudflap \
-	  --disable-libquadmath \
+	  --enable-libgomp \
+	  --enable-libmudflap \
+	  --enable-libquadmath \
 	  --disable-libsanitizer \
-	  --disable-libssp \
-	  --disable-libstdcxx-pch \
-	  --disable-long-long \
-	  --disable-lto \
+	  --enable-libssp \
+	  --enable-libstdcxx-pch \
+	  --enable-long-long \
+	  --enable-lto \
 	  --disable-multiarch \
-	  --enable-multilib \
-	  --disable-nls \
-	  --disable-plugin \
-	  --disable-shared \
-	  --disable-threads \
+	  --disable-multilib \
+	  --enable-nls \
+	  --enable-plugin \
+	  --enable-shared \
+	  --enable-threads=posix \
 	  --enable-__cxa_atexit \
-	  --with-abi=ilp32 \
-	  --with-arch=rv32ima \
-	  --with-local-prefix=$(SYSROOT)/usr \
-	  --with-build-sysroot=$(SYSROOT) \
-	  --with-newlib \
-	  --with-sysroot=$(SYSROOT) \
-	  --with-native-system-header-dir=/usr/include
+	  --with-arch=armv7-a --with-fpu=vfp --with-float=hard \
+	  --with-sysroot=$(SYSROOT)
 
 build-body:
 	$(MAKE) -f $(BUILDER_NAME) $@-default

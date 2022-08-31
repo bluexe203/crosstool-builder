@@ -1,7 +1,7 @@
 
-SRC_NAME       ?= linux
+SRC_NAME       ?= $(LINUX_KERNEL_VERSION)
 BUILD_NAME     ?= $(SRC_NAME)-headers
-BUILDER_NAME   ?= $(BUILD_NAME).mk
+BUILDER_NAME   ?= linux-headers.mk
 
 CONFIGURE_NAME ?= $(SRC_DIR)/Makefile
 MAKEFILE_NAME  ?= $(SRC_DIR)/.config

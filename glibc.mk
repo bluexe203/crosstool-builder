@@ -1,7 +1,7 @@
 
-SRC_NAME       ?= glibc
+SRC_NAME       ?= $(GLIBC_VERSION)
 BUILD_NAME     ?= $(SRC_NAME)
-BUILDER_NAME   ?= $(BUILD_NAME).mk
+BUILDER_NAME   ?= glibc.mk
 
 CONFIGURE_NAME ?= $(SRC_DIR)/configure
 MAKEFILE_NAME  ?= $(BUILD_DIR)/Makefile
@@ -16,8 +16,6 @@ include common.mk
 configure-body:
 	cd $(BUILD_DIR) && \
 	$(SRC_DIR)/configure \
-	  CFLAGS="-O2 -g $(ARCH_CFLAGS_FOR_TARGET)" \
-	  CXXFLAGS="-O2 -g $(ARCH_CXXFLAGS_FOR_TARGET)" \
 	  --host=$(CROSS_ARCH) \
 	  --prefix=/usr \
 	  --with-headers=$(SYSROOT)/usr/include \

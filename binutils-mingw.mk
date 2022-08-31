@@ -1,7 +1,7 @@
 
 SRC_NAME       ?= $(BINUTILS_VERSION)
-BUILD_NAME     ?= $(SRC_NAME)
-BUILDER_NAME   ?= binutils.mk
+BUILD_NAME     ?= $(SRC_NAME)-mingw
+BUILDER_NAME   ?= binutils-mingw.mk
 
 CONFIGURE_NAME ?= $(SRC_DIR)/configure
 MAKEFILE_NAME  ?= $(BUILD_DIR)/Makefile
@@ -16,6 +16,7 @@ configure-body:
 	$(SRC_DIR)/configure \
 	  --target=$(CROSS_ARCH) \
 	  --prefix=$(PREFIX) \
+	  --host=x86_64-w64-mingw32 \
 	  --enable-binutils \
 	  --enable-gas \
 	  --enable-gdb \

@@ -15,7 +15,7 @@ ifeq ($(BUILDER_NAME), )
   $(error "BUILDER_NAME is empty.")
 endif
 
-SRC_BASE     ?= .
+SRC_BASE     ?= ./tmp
 BUILD_BASE   ?= build
 BUILDER_BASE ?= builder
 

@@ -1,7 +1,7 @@
 
-SRC_NAME       ?= gcc
+SRC_NAME       ?= $(GCC_VERSION)
 BUILD_NAME     ?= $(SRC_NAME)-shared-glibc
-BUILDER_NAME   ?= $(BUILD_NAME).mk
+BUILDER_NAME   ?= gcc-shared-glibc.mk
 
 CONFIGURE_NAME ?= $(SRC_DIR)/configure
 MAKEFILE_NAME  ?= $(BUILD_DIR)/Makefile
@@ -14,13 +14,9 @@ include common.mk
 configure-body:
 	cd $(BUILD_DIR) && \
 	$(SRC_DIR)/configure \
-	  CFLAGS="-g -O0 -fno-inline $(ARCH_CFLAGS)" \
-	  CXXFLAGS="-g -O0 -fno-inline $(ARCH_CFLAGS)" \
-	  CFLAGS_FOR_TARGET="-g -O0 -fno-inline $(ARCH_CFLAGS_FOR_TARGET)" \
-	  CXXFLAGS_FOR_TARGET="-g -O0 -fno-inline $(ARCH_CXXFLAGS_FOR_TARGET)" \
 	  --target=$(CROSS_ARCH) \
 	  --prefix=$(PREFIX) \
-	  --enable-languages=c,c++,fortran \
+	  --enable-languages=c,c++ \
 	  --enable-libatomic \
 	  --disable-libitm \
 	  --enable-libgomp \
@@ -38,6 +34,7 @@ configure-body:
 	  --enable-shared \
 	  --enable-threads=posix \
 	  --enable-__cxa_atexit \
+	  --with-arch=armv7-a --with-fpu=vfp --with-float=hard \
 	  --with-sysroot=$(SYSROOT)
 
 build-body:
