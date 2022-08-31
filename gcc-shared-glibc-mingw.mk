@@ -35,7 +35,7 @@ configure-body:
 	  --enable-shared \
 	  --enable-threads=posix \
 	  --enable-__cxa_atexit \
-	  --with-arch=armv7-a --with-fpu=vfp --with-float=hard \
+	  --with-arch=armv7-a --with-fpu=vfpv4-d16 --with-float=hard \
 	  --with-sysroot=$(SYSROOT)
 
 build-body:
