@@ -8,7 +8,7 @@ ifeq ($(CROSS_ROOT), )
   $(error "CROSS_ROOT is empty.")
 endif
 
-SUBMODULES = linux-headers binutils gcc-static glibc gcc-shared-glibc
+SUBMODULES = linux-headers binutils gcc-static glibc gcc-shared-glibc binutils-mingw.mk gcc-shared-glibc-mingw.mk
 
 all install clean allclean:
 	for i in $(SUBMODULES) ; \
