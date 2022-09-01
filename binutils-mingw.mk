@@ -26,6 +26,7 @@ configure-body:
 	  --enable-libdecnumber \
 	  --enable-libreadline \
 	  --enable-sim \
+	  --enable-plugins \
 	  --disable-werror \
 	  --with-expat=yes
 
