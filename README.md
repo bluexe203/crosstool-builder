@@ -26,6 +26,7 @@ sudo apt install cifs-utils
 sudo apt install build-essential
 sudo apt install mingw-w64
 sudo apt install python
+sudo apt install git
 sudo apt install flex bison autogen automake autoconf libtool texinfo gawk libncurses5-dev libpython2.7-dev gcc-multilib g++-multilib dejagnu lsb zlib1g-dev
 ```
 
@@ -40,6 +41,7 @@ cd work
 # Download BuildScripts
 git clone https://github.com/bluexe203/crosstool-builder.git
 # Exec download.sh(download GCC, binutils, glibc, LinuxHeader, etc)
+cd crosstool-builder
 bash download.sh
 # Check Download Files
 ls tmp
@@ -49,7 +51,7 @@ ls tmp
 ## Build Toolchain
 
 ```bash
-# cd ~/work
+# cd ~/work/crosstool-builder
 # Setup Build Env
 source env.sh
 # Build Toolchain
@@ -97,5 +99,3 @@ Close PowerShell and reopen PowerShell
 # Check Installed gcc
 arm-unknown-linux-gnueabihf-gcc -v
 ```
-
-

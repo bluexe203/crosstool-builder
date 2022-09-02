@@ -38,7 +38,7 @@ configure-body:
 	  --with-local-prefix=$(SYSROOT) \
 	  --with-newlib \
 	  --with-sysroot=$(SYSROOT) \
-	  --with-arch=armv7-a --with-fpu=vfpv4-d16 --with-float=hard \
+	  --with-arch=armv7-a --with-fpu=neon-vfpv4 --with-float=hard \
 	  --with-pkgversion="testtest"
 
 build-body:
